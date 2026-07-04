@@ -192,6 +192,46 @@ a {
   border-color: var(--border);
 }
 
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.social-link::before {
+  content: '';
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+  background-color: currentColor;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+}
+
+.social-link-discord::before {
+  mask-image: url("assets/icons/discord.svg");
+  -webkit-mask-image: url("assets/icons/discord.svg");
+}
+
+.social-link-twitch::before {
+  mask-image: url("assets/icons/twitch.svg");
+  -webkit-mask-image: url("assets/icons/twitch.svg");
+}
+
+.social-link-youtube::before {
+  mask-image: url("assets/icons/youtube.svg");
+  -webkit-mask-image: url("assets/icons/youtube.svg");
+}
+
+.social-link-x::before {
+  mask-image: url("assets/icons/x.svg");
+  -webkit-mask-image: url("assets/icons/x.svg");
+}
+
 .card-grid {
   margin-top: 1.4rem;
   display: grid;
@@ -392,6 +432,8 @@ main {
 }
 
 .footer-links a {
+  display: inline-flex;
+  align-items: center;
   text-decoration: none;
   color: var(--text-muted);
 }
