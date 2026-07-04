@@ -329,6 +329,7 @@ a {
     transform: translateY(0) scale(1);
   }
   to {
+    /* 105vh ensures particles fully exit above the viewport before removal */
     transform: translateY(-105vh) scale(0.2);
     opacity: 0;
   }
