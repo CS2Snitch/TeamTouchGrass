@@ -59,7 +59,26 @@ if (track && dotsContainer && sliderPrev && sliderNext && sliderWrapper) {
   start();
 }
 
-// Floating grass particles
+// Weighted Twitch channel selection (refreshed each page load)
+(function () {
+  const twitchChannels = [
+    { url: 'https://www.twitch.tv/cs2snitch', weight: 60 },
+    { url: 'https://www.twitch.tv/sleepybalkan', weight: 10 },
+    { url: 'https://www.twitch.tv/', weight: 10 },
+    { url: 'https://www.twitch.tv/', weight: 10 },
+    { url: 'https://www.twitch.tv/', weight: 10 },
+  ];
+  const totalWeight = twitchChannels.reduce((sum, c) => sum + c.weight, 0);
+  let rand = Math.random() * totalWeight;
+  let chosen = twitchChannels[twitchChannels.length - 1].url;
+  for (const channel of twitchChannels) {
+    rand -= channel.weight;
+    if (rand <= 0) { chosen = channel.url; break; }
+  }
+  document.querySelectorAll('a.twitch-link').forEach((el) => { el.href = chosen; });
+}());
+
+
 const MAX_PARTICLES = 40;
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const field = document.createElement('div');
