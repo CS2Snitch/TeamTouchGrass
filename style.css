@@ -7,6 +7,7 @@
   --accent: #39ff14;
   --accent-soft: rgba(57, 255, 20, 0.2);
   --border: rgba(57, 255, 20, 0.3);
+  --surface-light: #fff;
 }
 
 * {
@@ -201,7 +202,7 @@ a {
 .gallery-card img {
   width: 100%;
   border-radius: 0.6rem;
-  background: #fff;
+  background: var(--surface-light);
   object-fit: contain;
 }
 
