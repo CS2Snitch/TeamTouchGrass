@@ -79,7 +79,7 @@ if (track && dotsContainer && sliderPrev && sliderNext && sliderWrapper) {
 }());
 
 
-const MAX_PARTICLES = 40;
+const MAX_PARTICLES = 80;
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const field = document.createElement('div');
   field.className = 'particle-field';
@@ -101,6 +101,6 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     p.addEventListener('animationend', () => p.remove());
   }
 
-  setInterval(spawnParticle, 500);
+  setInterval(spawnParticle, 250);
 }
 
