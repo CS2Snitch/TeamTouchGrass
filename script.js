@@ -64,8 +64,8 @@ if (track && dotsContainer && sliderPrev && sliderNext && sliderWrapper) {
   const twitchChannels = [
     { url: 'https://www.twitch.tv/cs2snitch', weight: 60 },
     { url: 'https://www.twitch.tv/sleepybalkan', weight: 10 },
-    { url: 'https://www.twitch.tv/', weight: 10 },
-    { url: 'https://www.twitch.tv/', weight: 10 },
+    { url: 'https://www.twitch.tv/gr0v_plays_games', weight: 10 },
+    { url: 'https://www.twitch.tv/los13nto', weight: 10 },
     { url: 'https://www.twitch.tv/', weight: 10 },
   ];
   const totalWeight = twitchChannels.reduce((sum, c) => sum + c.weight, 0);
