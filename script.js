@@ -18,6 +18,10 @@ if (header && menuToggle && primaryNav) {
   primaryNav.addEventListener('click', (event) => {
     if (event.target.closest('a')) closeMenu();
   });
+  document.addEventListener('click', (event) => {
+    if (!header.contains(event.target)) closeMenu();
+  });
+  window.matchMedia('(max-width: 800px)').addEventListener('change', closeMenu);
   header.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && header.classList.contains('menu-open')) {
       closeMenu();
@@ -70,7 +74,6 @@ if (gallery) {
   let playing = false;
   let pointerInside = false;
   let focusInside = false;
-  const gallerySection = document.querySelector('#gallery');
   const spacer = document.createElement('div');
   spacer.setAttribute('aria-hidden', 'true');
   gallery.appendChild(spacer);
@@ -94,6 +97,7 @@ if (gallery) {
   }
   function syncTimer() {
     clearInterval(timer);
+    count.setAttribute('aria-live', playing ? 'off' : 'polite');
     if (playing && !pointerInside && !focusInside && !document.hidden && !reducedMotion.matches) {
       timer = setInterval(() => goTo(current + 1), 5000);
     }
@@ -120,9 +124,10 @@ if (gallery) {
   });
   gallery.addEventListener('keydown', (event) => {
     if (event.target !== gallery) return;
-    if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+    if (['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) {
       event.preventDefault();
-      goTo(current + (event.key === 'ArrowRight' ? 1 : -1));
+      const target = event.key === 'Home' ? 0 : event.key === 'End' ? slides.length - 1 : current + (event.key === 'ArrowRight' ? 1 : -1);
+      goTo(target);
       syncTimer();
     }
   });
@@ -136,12 +141,20 @@ if (gallery) {
       update();
     }, 140);
   }, {passive: true});
-  gallerySection.addEventListener('pointerenter', () => { pointerInside = true; syncTimer(); });
-  gallerySection.addEventListener('pointerleave', () => { pointerInside = false; syncTimer(); });
-  gallerySection.addEventListener('focusin', () => { focusInside = true; syncTimer(); });
-  gallerySection.addEventListener('focusout', (event) => { focusInside = gallerySection.contains(event.relatedTarget); syncTimer(); });
+  // Pausing applies to the artwork, so focusing Play does not block playback.
+  gallery.addEventListener('pointerenter', () => { pointerInside = true; syncTimer(); });
+  gallery.addEventListener('pointerleave', () => { pointerInside = false; syncTimer(); });
+  gallery.addEventListener('focusin', () => { focusInside = true; syncTimer(); });
+  gallery.addEventListener('focusout', (event) => { focusInside = gallery.contains(event.relatedTarget); syncTimer(); });
   document.addEventListener('visibilitychange', syncTimer);
-  reducedMotion.addEventListener('change', syncTimer);
+  reducedMotion.addEventListener('change', () => {
+    if (reducedMotion.matches) {
+      playing = false;
+      playButton.textContent = 'Play slideshow';
+      playButton.setAttribute('aria-pressed', 'false');
+    }
+    syncTimer();
+  });
   window.addEventListener('resize', () => { sizeSpacer(); gallery.scrollTo({left: slideOffset(current), behavior: 'instant'}); });
   controls.hidden = false;
   dots.hidden = false;

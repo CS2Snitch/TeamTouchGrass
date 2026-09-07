@@ -6,7 +6,7 @@ Static GitHub Pages website for teamtouchgrass.com, rebranded from a FragPunk te
 
 - `index.html`: homepage, six game cards, Palworld connection guide, community sections, original six-artwork brand gallery, merch, and Discord links.
 - `style.css`: responsive black, white, and green design.
-- `script.js`: mobile navigation, address copying with manual fallback, accessible scrollable gallery with optional slideshow, and the existing weighted Twitch links.
+- `script.js`: mobile navigation, address copying with manual fallback, accessible scrollable gallery with optional slideshow, and the existing weighted Twitch links. The slideshow starts from its Play button, pauses while browsing artwork or in a hidden tab, and stops when reduced motion is enabled. Arrow keys browse; Home and End jump to the first and last artwork.
 - `assets/images/`: original gallery PNGs remain unchanged; `community-world.png` is a new original illustration inspired by their style.
 - `CNAME`: preserved as `teamtouchgrass.com`. Do not replace it with the game subdomain.
 
