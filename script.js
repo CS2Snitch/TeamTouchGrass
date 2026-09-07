@@ -21,13 +21,28 @@ if (header && menuToggle && primaryNav) {
   document.addEventListener('click', (event) => {
     if (!header.contains(event.target)) closeMenu();
   });
-  window.matchMedia('(max-width: 800px)').addEventListener('change', closeMenu);
+  window.matchMedia('(max-width: 900px)').addEventListener('change', closeMenu);
   header.addEventListener('keydown', (event) => {
     if (event.key === 'Escape' && header.classList.contains('menu-open')) {
       closeMenu();
       menuToggle.focus();
     }
   });
+}
+
+// Keep the main navigation aligned with the section being read.
+if (primaryNav && 'IntersectionObserver' in window) {
+  const sectionLinks = Array.from(primaryNav.querySelectorAll('a[href^="#"]'));
+  const sectionObserver = new IntersectionObserver((entries) => {
+    const visible = entries.filter((entry) => entry.isIntersecting);
+    if (!visible.length) return;
+    const active = visible.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0].target.id;
+    sectionLinks.forEach((link) => {
+      if (link.hash === `#${active}`) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }, {rootMargin: '-15% 0px -65% 0px', threshold: 0});
+  document.querySelectorAll('main > section[id]').forEach((section) => sectionObserver.observe(section));
 }
 
 let toastTimer;
@@ -41,10 +56,15 @@ function notify(message) {
 }
 document.querySelectorAll('[data-copy]').forEach((button) => {
   button.hidden = false;
+  const idleLabel = button.textContent;
+  let resetLabel;
   button.addEventListener('click', async () => {
     try {
       if (!navigator.clipboard || !window.isSecureContext) throw new Error('Clipboard unavailable');
       await navigator.clipboard.writeText(button.dataset.copy);
+      clearTimeout(resetLabel);
+      button.textContent = 'Copied!';
+      resetLabel = setTimeout(() => { button.textContent = idleLabel; }, 2500);
       notify('Server address copied. Paste it in Palworld.');
     } catch {
       const code = button.parentElement.querySelector('code');
