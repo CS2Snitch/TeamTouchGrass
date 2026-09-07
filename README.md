@@ -5,7 +5,7 @@ Static GitHub Pages website for teamtouchgrass.com, rebranded from a FragPunk te
 ## Files and editing
 
 - `index.html`: homepage, six game cards, Palworld connection guide, community sections, original six-artwork brand gallery, merch, and Discord links.
-- `style.css`: responsive black, white, and green design.
+- `style.css`: responsive black and green design with a framed community illustration, distinct game card accents, quick Palworld access, and navigation highlights. Gallery and merch previews fit each original artwork's visible bounds using CSS, preserving the complete design and unchanged downloadable PNGs.
 - `script.js`: mobile navigation, address copying with manual fallback, accessible scrollable gallery with optional slideshow, and the existing weighted Twitch links. The slideshow starts from its Play button, pauses while browsing artwork or in a hidden tab, and stops when reduced motion is enabled. Arrow keys browse; Home and End jump to the first and last artwork.
 - `assets/images/`: original gallery PNGs remain unchanged; `community-world.png` is a new original illustration inspired by their style.
 - `CNAME`: preserved as `teamtouchgrass.com`. Do not replace it with the game subdomain.
@@ -26,4 +26,4 @@ The existing analytics property `G-YDYLEMKYGG`, favicon, original artwork files,
 
 ## Review and publication
 
-This branch is prepared for review. Merging into the repository's configured GitHub Pages source branch publishes the redesign through the existing hosting setup. The domain's website/email DNS and Palworld DNS do not need changes for the redesign.
+The website publishes through GitHub Pages from `main`. Changes should preserve `CNAME`, all original gallery PNGs, existing community links, and analytics. The domain's website/email DNS and Palworld DNS do not need changes for visual updates.
