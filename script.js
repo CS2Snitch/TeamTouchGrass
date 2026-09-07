@@ -180,17 +180,3 @@ if (gallery) {
   dots.hidden = false;
   update();
 }
-
-// Retain the site's existing weighted community Twitch rotation.
-(function () {
-  const twitchChannels = [
-    {url: 'https://www.twitch.tv/cs2snitch', weight: 60},
-    {url: 'https://www.twitch.tv/sleepybalkan', weight: 10},
-    {url: 'https://www.twitch.tv/gr0v_plays_games', weight: 10},
-    {url: 'https://www.twitch.tv/los13nto', weight: 10},
-    {url: 'https://www.twitch.tv/', weight: 10},
-  ];
-  let random = Math.random() * twitchChannels.reduce((sum, item) => sum + item.weight, 0);
-  const chosen = twitchChannels.find((item) => { random -= item.weight; return random < 0; }) || twitchChannels[0];
-  document.querySelectorAll('.twitch-link').forEach((link) => { link.href = chosen.url; });
-}());
