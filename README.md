@@ -18,7 +18,7 @@ Discord: https://discord.gg/cs2snitch
 
 Merch: https://teamtouchgrass.store
 
-Social links: https://twitch.tv/cs2snitch · https://youtube.com/cs2snitch · https://x.com/cs2snitch · https://tiktok.com/cs2snitch
+Social links: https://twitch.tv/cs2snitch · https://youtube.com/cs2snitch · https://x.com/cs2snitch · https://www.tiktok.com/@cs2snitch
 
 Twitch always opens CS2Snitch; there is no channel rotation.
 
