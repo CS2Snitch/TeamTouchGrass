@@ -14,7 +14,7 @@ No installation, framework, database, account system, or build step is required.
 
 ## Community destinations
 
-Discord: https://discord.gg/cs2snitch
+Discord: https://discord.gg/teamtouchgrass
 
 Merch: https://teamtouchgrass.store
 
