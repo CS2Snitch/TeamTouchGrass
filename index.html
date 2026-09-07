@@ -1,258 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Touch Grass | FragPunk Team</title>
-    <meta
-      name="description"
-      content="Touch Grass is a competitive FragPunk esports team playing weekly matches and building a strong gaming community."
-    />
-    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YDYLEMKYGG"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-YDYLEMKYGG');
-    </script>
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container nav-wrapper">
-        <a class="brand" href="#hero">
-          <img class="brand-logo" src="assets/images/touch-grass-logo.png" alt="Touch Grass logo" />
-          Touch Grass
-        </a>
-        <nav aria-label="Primary">
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#schedule">Schedule</a></li>
-            <li><a href="#roster">Roster</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#merch">Merch</a></li>
-            <li><a href="#news">News</a></li>
-            <li><a href="#join">Join</a></li>
-          </ul>
-        </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#11150e" />
+  <title>Touch Grass | Community Gaming</title>
+  <meta name="description" content="Find your people. Pick your game. Join Touch Grass for Palworld, Counter-Strike 2, Team Fortress 2, FragPunk, Minecraft, and How to Fish." />
+  <meta property="og:title" content="Touch Grass | Community Gaming" />
+  <meta property="og:description" content="Six games. One community. Find a squad, join our Palworld world, and make yourself at home." />
+  <link rel="canonical" href="https://teamtouchgrass.com/" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- Existing analytics property retained. -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YDYLEMKYGG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YDYLEMKYGG');
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container nav-wrapper">
+      <a class="brand" href="#hero" aria-label="Touch Grass home">
+        <img src="assets/images/touch-grass-logo.png" width="52" height="52" alt="" />
+        <span>TOUCH <strong>GRASS</strong><small>GAMING COMMUNITY</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" hidden>Menu <span aria-hidden="true">☰</span></button>
+      <nav id="primary-nav" aria-label="Primary navigation">
+        <a href="#games">Our games</a><a href="#servers">Servers</a><a href="#gallery">Brand gallery</a><a href="#merch">Merch</a>
+        <a class="button button-small button-primary" href="https://discord.gg/cs2snitch" target="_blank" rel="noopener noreferrer">Join Discord <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section id="hero" class="hero">
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="rule" aria-hidden="true"></span> GOOD GAME. GOOD GRASS.</p>
+          <h1>YOUR PEOPLE.<br />YOUR GAMES.<br /><em>TOUCH GRASS.</em></h1>
+          <p class="hero-description">From the next clutch to the next catch.<br />A place to squad up, build worlds, and hang out.</p>
+          <div class="actions">
+            <a class="button button-primary" href="#games">Find your game <span aria-hidden="true">↓</span></a>
+            <a class="button button-outline" href="https://discord.gg/cs2snitch" target="_blank" rel="noopener noreferrer"><img src="assets/icons/discord.svg" alt="" width="20" height="20" /> Join the community</a>
+          </div>
+          <p class="hero-note">COMPETE. CREATE. CAST A LINE.</p>
+        </div>
+        <div class="hero-art">
+          <img class="community-art" src="assets/images/community-world.png" width="1536" height="1024" alt="An illustrated gaming hangout in a green world, with adventurers, a friendly creature, and a fishing pond." fetchpriority="high" />
+          <div class="art-stamp"><span>OFF THE CLOCK.</span><strong>IN GOOD COMPANY.</strong></div>
+        </div>
       </div>
-    </header>
-
-    <main>
-      <section id="hero" class="hero section">
-        <div class="container hero-content reveal-on-scroll">
-          <!-- Update team headline and tagline here -->
-          <p class="kicker">FragPunk Esports Team</p>
-          <h1>Touch Grass</h1>
-          <p class="tagline">
-            Weekly FragPunk Matches. Competitive Team. Touch Grass.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#schedule">View Schedule</a>
-            <a class="btn btn-secondary" href="https://teamtouchgrass.store" target="_blank" rel="noopener noreferrer">Shop Merch</a>
-            <a class="btn btn-secondary social-link social-link-discord" href="https://discord.gg/cs2snitch" target="_blank" rel="noopener noreferrer" aria-label="Join Discord"><span>Join Discord</span></a>
-          </div>
+      <div class="game-strip" aria-label="Our community games"><div class="container"><span>PALWORLD</span><span>CS2</span><span>TEAM FORTRESS 2</span><span>FRAGPUNK</span><span>MINECRAFT</span><span>HOW TO FISH</span></div></div>
+    </section>
+    <section id="games" class="section">
+      <div class="container">
+        <div class="section-heading"><div><p class="eyebrow">01 / FIND YOUR NEXT SESSION</p><h2>SIX GAMES.<br /><span>ONE COMMUNITY.</span></h2></div><p>Pick your game. Bring your friends.<br />Meet the rest of the crew in Discord.</p></div>
+        <div class="game-grid">
+          <article class="game-card game-palworld"><div class="game-card-top"><span class="game-kind">SURVIVE &amp; EXPLORE</span><span class="game-number" aria-hidden="true">01</span></div><h3>PALWORLD</h3><p>Build a base, gather your Pals, and explore our shared world.</p><a href="#servers" class="game-action">Join our Palworld server <span aria-hidden="true">↗</span></a><span class="card-label">COMMUNITY SERVER</span></article>
+          <article class="game-card"><div class="game-card-top"><span class="game-kind">TACTICAL &amp; COMPETITIVE</span><span class="game-number" aria-hidden="true">02</span></div><h3>COUNTER-<br />STRIKE 2</h3><p>Find a stack, work on your game, and celebrate the clutch together.</p><a href="https://discord.gg/cs2snitch" target="_blank" rel="noopener noreferrer" class="game-action">Find CS2 players <span aria-hidden="true">↗</span></a></article>
+          <article class="game-card"><div class="game-card-top"><span class="game-kind">TEAMWORK &amp; CHAOS</span><span class="game-number" aria-hidden="true">03</span></div><h3>TEAM<br />FORTRESS 2</h3><p>Pick your class. Bring the teamwork. Stay for the ridiculous moments.</p><a href="https://discord.gg/cs2snitch" target="_blank" rel="noopener noreferrer" class="game-action">Find TF2 players <span aria-hidden="true">↗</span></a></article>
+          <article class="game-card"><div class="game-card-top"><span class="game-kind">SHUFFLE THE RULES</span><span class="game-number" aria-hidden="true">04</span></div><h3>FRAGPUNK</h3><p>Our original stomping ground. Squad up and make the next round count.</p><a href="https://discord.gg/cs2snitch" target="_blank" rel="noopener noreferrer" class="game-action">Find FragPunk players <span aria-hidden="true">↗</span></a></article>
+          <article class="game-card"><div class="game-card-top"><span class="game-kind">BUILD &amp; DISCOVER</span><span class="game-number" aria-hidden="true">05</span></div><h3>MINECRAFT</h3><p>Big builds, small adventures, and another good reason to stay for one more block.</p><a href="https://discord.gg/cs2snitch" target="_blank" rel="noopener noreferrer" class="game-action">Find Minecraft players <span aria-hidden="true">↗</span></a></article>
+          <article class="game-card game-fishing"><div class="game-card-top"><span class="game-kind">CAST &amp; UNWIND</span><span class="game-number" aria-hidden="true">06</span></div><h3>HOW TO<br />FISH</h3><p>Slow things down, share your catches, and enjoy some time with the crew.</p><a href="https://discord.gg/cs2snitch" target="_blank" rel="noopener noreferrer" class="game-action">Find fishing friends <span aria-hidden="true">↗</span></a></article>
         </div>
-      </section>
-
-      <section id="about" class="section">
-        <div class="container narrow reveal-on-scroll">
-          <h2>About Touch Grass</h2>
-          <!-- Update this paragraph to reflect the latest team story -->
-          <p>
-            Touch Grass is a competitive FragPunk team focused on weekly matches,
-            team growth, and building a welcoming community for players and fans.
-            We train hard, play smart, and create fun gaming moments every week.
-          </p>
-        </div>
-      </section>
-
-      <section id="schedule" class="section">
-        <div class="container reveal-on-scroll">
-          <h2>Match Schedule</h2>
-          <div class="card-grid schedule-grid">
-            <!-- Update match cards weekly -->
-            <article class="card match-card">
-              <p class="meta">July 11, 2026 · 7:00 PM</p>
-              <h3>Touch Grass vs Neon Phantoms</h3>
-              <p>Status: Upcoming</p>
-            </article>
-            <article class="card match-card">
-              <p class="meta">July 18, 2026 · 8:30 PM</p>
-              <h3>Touch Grass vs Shock Circuit</h3>
-              <p>Status: Confirmed</p>
-            </article>
-            <article class="card match-card">
-              <p class="meta">July 25, 2026 · 6:00 PM</p>
-              <h3>Touch Grass vs Rift Hunters</h3>
-              <p>Status: Scrim Locked</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="roster" class="section">
-        <div class="container reveal-on-scroll">
-          <h2>Team Roster</h2>
-          <div class="card-grid roster-grid">
-            <!-- Replace placeholder gamer tags and roles here -->
-            <article class="card player-card">
-              <h3>VEXA</h3>
-              <p class="meta">IGL / Duelist</p>
-              <p>Calls fast executes and keeps the team calm under pressure.</p>
-            </article>
-            <article class="card player-card">
-              <h3>KRYPT</h3>
-              <p class="meta">Anchor / Controller</p>
-              <p>Locks down lanes and sets up winning retake utility.</p>
-            </article>
-            <article class="card player-card">
-              <h3>PIXEL</h3>
-              <p class="meta">Flex / Entry</p>
-              <p>High-impact opener with aggressive map control instincts.</p>
-            </article>
-            <article class="card player-card">
-              <h3>NOVA</h3>
-              <p class="meta">Support / Initiator</p>
-              <p>Creates space and feeds critical information every round.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="gallery" class="section">
-        <div class="container reveal-on-scroll">
-          <h2>Brand Gallery</h2>
-          <div class="gallery-slider">
-            <button class="slider-btn slider-prev" aria-label="Previous image">&#8249;</button>
-            <div class="slider-track-wrapper">
-              <div class="slider-track">
-                <figure class="slide">
-                  <img src="assets/images/touch-grass-logo.png" alt="Touch Grass team logo" loading="lazy" />
-                  <figcaption>Touch Grass Logo</figcaption>
-                </figure>
-                <figure class="slide">
-                  <img src="assets/images/touch-grass-stay-humble.png" alt="Touch Grass badge: Stay Humble. Go Outside." loading="lazy" />
-                  <figcaption>Stay Humble. Go Outside.</figcaption>
-                </figure>
-                <figure class="slide">
-                  <img src="assets/images/touch-grass-thats-the-meta.png" alt="Touch Grass badge: Touch Grass, That's the Meta." loading="lazy" />
-                  <figcaption>Touch Grass. That's the Meta.</figcaption>
-                </figure>
-                <figure class="slide">
-                  <img src="assets/images/good-game-good-grass.png" alt="Graphic reading Good Game. Good Grass." loading="lazy" />
-                  <figcaption>Good Game. Good Grass.</figcaption>
-                </figure>
-                <figure class="slide">
-                  <img src="assets/images/less-screen-time-more-green-time.png" alt="Graphic reading Less Screen Time. More Green Time." loading="lazy" />
-                  <figcaption>Less Screen Time. More Green Time.</figcaption>
-                </figure>
-                <figure class="slide">
-                  <img src="assets/images/play-hard-touch-grass-repeat.png" alt="Graphic reading Play Hard. Touch Grass. Repeat." loading="lazy" />
-                  <figcaption>Play Hard. Touch Grass. Repeat.</figcaption>
-                </figure>
-              </div>
-            </div>
-            <button class="slider-btn slider-next" aria-label="Next image">&#8250;</button>
-          </div>
-          <div class="slider-dots" role="tablist" aria-label="Gallery slides"></div>
-        </div>
-      </section>
-
-      <section id="merch" class="section">
-        <div class="container reveal-on-scroll">
-          <div class="card merch-card">
-            <div class="merch-copy">
-              <p class="kicker merch-kicker">Printify Merch Store</p>
-              <h2>Official Touch Grass Merch</h2>
-              <p>
-                Rep the squad with our Printify-powered store at
-                <strong>teamtouchgrass.store</strong>. Grab team-inspired gear,
-                fresh drops, and everyday merch built for the community.
-              </p>
-              <div class="hero-actions">
-                <a class="btn btn-primary" href="https://teamtouchgrass.store" target="_blank" rel="noopener noreferrer">Visit teamtouchgrass.store</a>
-                <a class="btn btn-secondary" href="#gallery">View Designs</a>
-              </div>
-            </div>
-            <div class="merch-highlights" aria-label="Merch store highlights">
-              <article class="card">
-                <h3>Hosted Storefront</h3>
-                <p>Send supporters directly to the custom subdomain for a clean shopping experience.</p>
-              </article>
-              <article class="card">
-                <h3>Printify Fulfillment</h3>
-                <p>Use Printify for product production, order handling, and shipping behind the scenes.</p>
-              </article>
-              <article class="card">
-                <h3>Brand-Ready Drops</h3>
-                <p>Feature logo apparel, slogan gear, and new releases alongside the existing gallery art.</p>
-              </article>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="news" class="section">
-        <div class="container reveal-on-scroll">
-          <h2>News &amp; Updates</h2>
-          <div class="card-grid news-grid">
-            <!-- Swap these placeholders with real updates -->
-            <article class="card update-card">
-              <h3>Match Result</h3>
-              <p>Touch Grass secured a 2-1 win after a clutch final round.</p>
-            </article>
-            <article class="card update-card">
-              <h3>Team Announcement</h3>
-              <p>Open tryouts are live for one flex player this month.</p>
-            </article>
-            <article class="card update-card">
-              <h3>Upcoming Event</h3>
-              <p>Weekend community scrim night starts Saturday at 8 PM.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="join" class="section join-section">
-        <div class="container narrow reveal-on-scroll">
-          <h2>Contact &amp; Join</h2>
-          <p>
-            Players, fans, and teams — connect with Touch Grass and be part of
-            the next match day.
-          </p>
-          <div class="hero-actions social-actions">
-            <a class="btn btn-primary" href="https://teamtouchgrass.store" target="_blank" rel="noopener noreferrer">Shop Merch</a>
-            <a class="btn btn-primary social-link social-link-discord" href="https://discord.gg/cs2snitch" target="_blank" rel="noopener noreferrer" aria-label="Discord"><span>Discord</span></a>
-            <a class="btn btn-secondary twitch-link social-link social-link-twitch" href="https://twitch.tv" target="_blank" rel="noopener noreferrer" aria-label="Twitch"><span>Twitch</span></a>
-            <a class="btn btn-secondary social-link social-link-youtube" href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><span>YouTube</span></a>
-            <a class="btn btn-secondary social-link social-link-x" href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter"><span>X / Twitter</span></a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-content">
-        <p>Touch Grass © 2026</p>
-        <ul class="footer-links" aria-label="Social links">
-          <li><a href="https://teamtouchgrass.store" target="_blank" rel="noopener noreferrer">Merch</a></li>
-          <li><a class="social-link social-link-discord" href="https://discord.gg/cs2snitch" target="_blank" rel="noopener noreferrer" aria-label="Discord"><span>Discord</span></a></li>
-          <li><a class="twitch-link social-link social-link-twitch" href="https://twitch.tv" target="_blank" rel="noopener noreferrer" aria-label="Twitch"><span>Twitch</span></a></li>
-          <li><a class="social-link social-link-youtube" href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><span>YouTube</span></a></li>
-          <li><a class="social-link social-link-x" href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="X"><span>X</span></a></li>
-        </ul>
       </div>
-    </footer>
-
-    <script src="script.js"></script>
-  </body>
+    </section>
+    <section id="servers" class="section server-section">
+      <div class="container server-layout">
+        <div class="server-intro"><p class="eyebrow">02 / OUR SHARED WORLD</p><h2>MAKE YOURSELF<br /><span>AT HOME.</span></h2><p>Our Palworld community server is your next stop. Grab the address, hop into the game, and settle in.</p><a class="text-link" href="https://discord.gg/cs2snitch" target="_blank" rel="noopener noreferrer">Ask the crew for help <span aria-hidden="true">↗</span></a><img class="server-brand" src="assets/images/touch-grass-logo.png" width="1254" height="1254" alt="Touch Grass gloved hand and grass emblem" loading="lazy" /></div>
+        <div class="server-panel">
+          <div class="server-panel-title"><h3>PALWORLD</h3><span>COMMUNITY SERVER</span></div>
+          <p class="field-label">Server address</p>
+          <div class="address-box"><code id="palworld-address">play.teamtouchgrass.com:45000</code><button class="copy-button" type="button" data-copy="play.teamtouchgrass.com:45000" aria-label="Copy Palworld server address" hidden>Copy</button></div>
+          <p class="server-caption">Enter the complete address, including <strong>:45000</strong>, inside Palworld. This is a game address, so opening it in your web browser won’t join the server.</p>
+          <h4>How to join</h4>
+          <ol class="join-steps"><li>Open Palworld and select <strong>Join Multiplayer Game</strong>.</li><li>Paste the address into the box below the server list and select <strong>Connect</strong>.</li><li>If prompted, use the server join password. Ask in Discord if you need access.</li></ol>
+          <details class="connection-help"><summary>Address not connecting?</summary><div><p>Try the direct IP if the domain hasn’t updated yet or your game client won’t accept it.</p><div class="address-box address-fallback"><code>15.204.102.13:45000</code><button class="copy-button" type="button" data-copy="15.204.102.13:45000" aria-label="Copy direct Palworld IP address" hidden>Copy IP</button></div><p>If you don’t see a direct connection box, or neither address works, ask for help in Discord and include your platform and error message.</p></div></details>
+          <p class="server-footnote">Server availability isn’t monitored on this page. Other game sessions are organized in Discord. <a href="https://docs.palworldgame.com/getting-started/connect-server/" target="_blank" rel="noopener noreferrer">Official Palworld connection guide ↗</a></p>
+        </div>
+      </div>
+    </section>
+    <section id="about" class="section community-section">
+      <div class="container community-layout">
+        <div><p class="eyebrow">03 / THE PEOPLE MAKE IT</p><h2>MORE THAN<br /><span>A TEAM TAG.</span></h2></div>
+        <div class="community-copy"><p>Touch Grass started with FragPunk. Now we’re making room for more games and more people. Whether you’re chasing a win, building something ridiculous, or just here to fish, there’s a place for you.</p><div id="roster" class="community-values"><span>PLAY FAIR.</span><span>STAY HUMBLE.</span><span>WELCOME THE NEXT PLAYER.</span></div><div id="schedule" class="community-note"><h3>Game nights start in Discord.</h3><p>Find teammates and check the community for session times. No fixed match schedule is posted here.</p><a class="text-link" href="https://discord.gg/cs2snitch" target="_blank" rel="noopener noreferrer">See what the crew is playing <span aria-hidden="true">↗</span></a></div></div>
+      </div>
+    </section>
+    <section id="gallery" class="section gallery-section" aria-labelledby="gallery-title">
+      <div class="container">
+        <div class="section-heading"><div><p class="eyebrow">04 / SAME ROOTS</p><h2 id="gallery-title">THE BRAND<br /><span>GALLERY.</span></h2></div><div class="gallery-heading-right"><p>The art. The attitude. The grass.<br />Our original collection, all in one place.</p><div class="gallery-controls" hidden><button class="icon-button gallery-prev" type="button" aria-label="Previous artwork">←</button><span class="gallery-count" aria-live="polite">01 / 06</span><button class="icon-button gallery-next" type="button" aria-label="Next artwork">→</button><button class="autoplay-button" type="button" aria-pressed="false">Play slideshow</button></div></div></div>
+        <div class="gallery-track" tabindex="0" aria-label="Brand artwork. Scroll horizontally to browse.">
+          <figure class="gallery-slide" id="art-1"><a class="art-frame" href="assets/images/touch-grass-logo.png" target="_blank" rel="noopener noreferrer" aria-label="Open original Touch Grass logo"><img class="art-logo" src="assets/images/touch-grass-logo.png" width="1254" height="1254" alt="Touch Grass logo with a gloved hand touching grass" loading="lazy" /></a><figcaption><span>01</span><h3>Touch Grass Logo</h3><a href="assets/images/touch-grass-logo.png" download aria-label="Download Touch Grass logo">↓</a></figcaption></figure>
+          <figure class="gallery-slide" id="art-2"><a class="art-frame" href="assets/images/touch-grass-stay-humble.png" target="_blank" rel="noopener noreferrer" aria-label="Open original Stay Humble artwork"><img class="art-humble" src="assets/images/touch-grass-stay-humble.png" width="1920" height="1080" alt="Touch Grass badge: Stay Humble. Go Outside." loading="lazy" /></a><figcaption><span>02</span><h3>Stay Humble. Go Outside.</h3><a href="assets/images/touch-grass-stay-humble.png" download aria-label="Download Stay Humble artwork">↓</a></figcaption></figure>
+          <figure class="gallery-slide" id="art-3"><a class="art-frame" href="assets/images/touch-grass-thats-the-meta.png" target="_blank" rel="noopener noreferrer" aria-label="Open original That's the Meta artwork"><img class="art-meta" src="assets/images/touch-grass-thats-the-meta.png" width="1920" height="1080" alt="Touch Grass badge: Touch Grass. That's the Meta." loading="lazy" /></a><figcaption><span>03</span><h3>Touch Grass. That’s the Meta.</h3><a href="assets/images/touch-grass-thats-the-meta.png" download aria-label="Download That's the Meta artwork">↓</a></figcaption></figure>
+          <figure class="gallery-slide" id="art-4"><a class="art-frame" href="assets/images/good-game-good-grass.png" target="_blank" rel="noopener noreferrer" aria-label="Open original Good Game artwork"><img class="art-good" src="assets/images/good-game-good-grass.png" width="1920" height="1080" alt="Graphic reading Good Game. Good Grass." loading="lazy" /></a><figcaption><span>04</span><h3>Good Game. Good Grass.</h3><a href="assets/images/good-game-good-grass.png" download aria-label="Download Good Game artwork">↓</a></figcaption></figure>
+          <figure class="gallery-slide" id="art-5"><a class="art-frame" href="assets/images/less-screen-time-more-green-time.png" target="_blank" rel="noopener noreferrer" aria-label="Open original More Green Time artwork"><img class="art-green" src="assets/images/less-screen-time-more-green-time.png" width="1920" height="1080" alt="Graphic reading Less Screen Time. More Green Time." loading="lazy" /></a><figcaption><span>05</span><h3>Less Screen. More Green.</h3><a href="assets/images/less-screen-time-more-green-time.png" download aria-label="Download More Green Time artwork">↓</a></figcaption></figure>
+          <figure class="gallery-slide" id="art-6"><a class="art-frame" href="assets/images/play-hard-touch-grass-repeat.png" target="_blank" rel="noopener noreferrer" aria-label="Open original Play Hard artwork"><img class="art-repeat" src="assets/images/play-hard-touch-grass-repeat.png" width="1920" height="1080" alt="Graphic reading Play Hard. Touch Grass. Repeat." loading="lazy" /></a><figcaption><span>06</span><h3>Play Hard. Touch Grass. Repeat.</h3><a href="assets/images/play-hard-touch-grass-repeat.png" download aria-label="Download Play Hard artwork">↓</a></figcaption></figure>
+        </div>
+        <div class="gallery-bottom"><p>Scroll or swipe to explore. Open an artwork to see the original.</p><div class="gallery-dots" aria-label="Choose artwork" hidden></div></div>
+      </div>
+    </section>
+    <section id="merch" class="section merch-section">
+      <div class="container merch-layout"><div class="merch-art"><img src="assets/images/play-hard-touch-grass-repeat.png" width="1920" height="1080" alt="Play Hard. Touch Grass. Repeat. brand artwork" loading="lazy" /></div><div class="merch-copy"><p class="eyebrow">05 / TAKE IT OFFLINE</p><h2>GOOD GRASS.<br /><span>GREAT GEAR.</span></h2><p>Wear the same designs you see in the gallery. Explore the official Touch Grass merch store.</p><a class="button button-primary" href="https://teamtouchgrass.store" target="_blank" rel="noopener noreferrer">Shop Touch Grass <span aria-hidden="true">↗</span></a></div></div>
+    </section>
+    <section id="news" class="community-update"><div class="container"><span class="eyebrow">COMMUNITY UPDATE</span><p>New chapter. Same roots. Touch Grass is bringing six games under one roof.</p><a href="#games">Explore the games <span aria-hidden="true">↑</span></a></div></section>
+    <section id="join" class="section join-section"><div class="container"><p class="eyebrow">THERE’S ROOM IN THE SQUAD.</p><h2>COME FOR THE GAME.<br /><span>STAY FOR THE PEOPLE.</span></h2><a class="button button-dark" href="https://discord.gg/cs2snitch" target="_blank" rel="noopener noreferrer"><img src="assets/icons/discord.svg" alt="" width="22" height="22" /> Join our Discord <span aria-hidden="true">↗</span></a></div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-layout"><a class="brand" href="#hero"><img src="assets/images/touch-grass-logo.png" width="52" height="52" alt="" /><span>TOUCH <strong>GRASS</strong><small>GOOD GAME. GOOD GRASS.</small></span></a><nav aria-label="Footer"><a href="#games">Our games</a><a href="#servers">Palworld server</a><a href="#gallery">Brand gallery</a><a href="https://teamtouchgrass.store" target="_blank" rel="noopener noreferrer">Merch ↗</a></nav><div class="footer-socials"><a href="https://discord.gg/cs2snitch" target="_blank" rel="noopener noreferrer">Discord ↗</a><a class="twitch-link" href="https://www.twitch.tv/cs2snitch" target="_blank" rel="noopener noreferrer">Community Twitch ↗</a><a href="https://youtube.com/@CS2Snitch" target="_blank" rel="noopener noreferrer">YouTube ↗</a><a href="https://x.com" target="_blank" rel="noopener noreferrer">X ↗</a></div></div><div class="container footer-bottom"><span>© 2026 Touch Grass</span><span>A community for players. Game names belong to their respective owners.</span></div></footer>
+  <div class="toast" role="status" aria-live="polite" hidden></div>
+  <script src="script.js"></script>
+</body>
 </html>
