@@ -1,106 +1,163 @@
-const revealElements = document.querySelectorAll('.reveal-on-scroll');
+'use strict';
 
-const revealObserver = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+// Navigation stays usable without JavaScript; small screens get a toggle when enhanced.
+const header = document.querySelector('.site-header');
+const menuToggle = document.querySelector('.menu-toggle');
+const primaryNav = document.querySelector('#primary-nav');
+if (header && menuToggle && primaryNav) {
+  header.classList.add('menu-ready');
+  menuToggle.hidden = false;
+  const closeMenu = () => {
+    header.classList.remove('menu-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  };
+  menuToggle.addEventListener('click', () => {
+    const open = header.classList.toggle('menu-open');
+    menuToggle.setAttribute('aria-expanded', String(open));
+  });
+  primaryNav.addEventListener('click', (event) => {
+    if (event.target.closest('a')) closeMenu();
+  });
+  header.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && header.classList.contains('menu-open')) {
+      closeMenu();
+      menuToggle.focus();
+    }
+  });
+}
+
+let toastTimer;
+function notify(message) {
+  const toast = document.querySelector('.toast');
+  if (!toast) return;
+  clearTimeout(toastTimer);
+  toast.textContent = message;
+  toast.hidden = false;
+  toastTimer = setTimeout(() => { toast.hidden = true; }, 5000);
+}
+document.querySelectorAll('[data-copy]').forEach((button) => {
+  button.hidden = false;
+  button.addEventListener('click', async () => {
+    try {
+      if (!navigator.clipboard || !window.isSecureContext) throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(button.dataset.copy);
+      notify('Server address copied. Paste it in Palworld.');
+    } catch {
+      const code = button.parentElement.querySelector('code');
+      const selection = window.getSelection();
+      if (code && selection) {
+        const range = document.createRange();
+        range.selectNodeContents(code);
+        selection.removeAllRanges();
+        selection.addRange(range);
       }
-    });
-  },
-  { threshold: 0.15 }
-);
+      notify('Select and copy the highlighted address, then paste it in Palworld.');
+    }
+  });
+});
 
-revealElements.forEach((el) => revealObserver.observe(el));
-
-// Gallery slider
-const track = document.querySelector('.slider-track');
-const dotsContainer = document.querySelector('.slider-dots');
-const sliderPrev = document.querySelector('.slider-prev');
-const sliderNext = document.querySelector('.slider-next');
-const sliderWrapper = document.querySelector('.gallery-slider');
-
-if (track && dotsContainer && sliderPrev && sliderNext && sliderWrapper) {
-  const slides = Array.from(track.children);
+// Original artwork is unchanged. Native scrolling also works without JavaScript.
+const gallery = document.querySelector('.gallery-track');
+if (gallery) {
+  const slides = Array.from(gallery.querySelectorAll('.gallery-slide'));
+  const controls = document.querySelector('.gallery-controls');
+  const dots = document.querySelector('.gallery-dots');
+  const count = document.querySelector('.gallery-count');
+  const playButton = document.querySelector('.autoplay-button');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   let current = 0;
   let timer;
-
-  function goTo(index) {
-    current = (index + slides.length) % slides.length;
-    track.style.transform = `translateX(-${current * 100}%)`;
-    document.querySelectorAll('.slider-dot').forEach((dot, i) => {
-      dot.classList.toggle('active', i === current);
-      dot.setAttribute('aria-selected', String(i === current));
+  let playing = false;
+  let pointerInside = false;
+  let focusInside = false;
+  const gallerySection = document.querySelector('#gallery');
+  const spacer = document.createElement('div');
+  spacer.setAttribute('aria-hidden', 'true');
+  gallery.appendChild(spacer);
+  function sizeSpacer() {
+    const gap = parseFloat(getComputedStyle(gallery).columnGap) || 0;
+    spacer.style.flex = `0 0 ${Math.max(0, gallery.clientWidth - slides[0].getBoundingClientRect().width - gap)}px`;
+  }
+  sizeSpacer();
+  function maxScroll() { return Math.max(0, gallery.scrollWidth - gallery.clientWidth); }
+  function slideOffset(index) { return Math.min(slides[index].offsetLeft - slides[0].offsetLeft, maxScroll()); }
+  function update() {
+    count.textContent = `${String(current + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+    dots.querySelectorAll('button').forEach((button, index) => {
+      button.setAttribute('aria-current', String(index === current));
     });
   }
-
-  slides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('role', 'tab');
-    dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
-    dot.setAttribute('aria-selected', String(i === 0));
-    dot.addEventListener('click', () => { goTo(i); reset(); });
-    dotsContainer.appendChild(dot);
+  function goTo(index) {
+    current = (index + slides.length) % slides.length;
+    gallery.scrollTo({left: slideOffset(current), behavior: reducedMotion.matches ? 'instant' : 'smooth'});
+    update();
+  }
+  function syncTimer() {
+    clearInterval(timer);
+    if (playing && !pointerInside && !focusInside && !document.hidden && !reducedMotion.matches) {
+      timer = setInterval(() => goTo(current + 1), 5000);
+    }
+  }
+  slides.forEach((slide, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'gallery-dot';
+    button.setAttribute('aria-label', `Show ${slide.querySelector('h3').textContent}`);
+    button.addEventListener('click', () => { goTo(index); syncTimer(); });
+    dots.appendChild(button);
   });
-
-  sliderPrev.addEventListener('click', () => { goTo(current - 1); reset(); });
-  sliderNext.addEventListener('click', () => { goTo(current + 1); reset(); });
-
-  function start() { timer = setInterval(() => goTo(current + 1), 4000); }
-  function reset() { clearInterval(timer); start(); }
-
-  sliderWrapper.addEventListener('mouseenter', () => clearInterval(timer));
-  sliderWrapper.addEventListener('mouseleave', start);
-  sliderWrapper.addEventListener('focusin', () => clearInterval(timer));
-  sliderWrapper.addEventListener('focusout', start);
-
-  start();
+  document.querySelector('.gallery-prev').addEventListener('click', () => { goTo(current - 1); syncTimer(); });
+  document.querySelector('.gallery-next').addEventListener('click', () => { goTo(current + 1); syncTimer(); });
+  playButton.addEventListener('click', () => {
+    if (reducedMotion.matches) {
+      notify('Slideshow motion is off because your device prefers reduced motion. Use the arrows to browse.');
+      return;
+    }
+    playing = !playing;
+    playButton.textContent = playing ? 'Pause slideshow' : 'Play slideshow';
+    playButton.setAttribute('aria-pressed', String(playing));
+    syncTimer();
+  });
+  gallery.addEventListener('keydown', (event) => {
+    if (event.target !== gallery) return;
+    if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+      event.preventDefault();
+      goTo(current + (event.key === 'ArrowRight' ? 1 : -1));
+      syncTimer();
+    }
+  });
+  let scrollTimer;
+  gallery.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      // Several cards can share the final scroll position. Keep the chosen card then.
+      if (Math.abs(gallery.scrollLeft - slideOffset(current)) < 5) return;
+      current = slides.reduce((nearest, _, index) => Math.abs(slideOffset(index) - gallery.scrollLeft) < Math.abs(slideOffset(nearest) - gallery.scrollLeft) ? index : nearest, 0);
+      update();
+    }, 140);
+  }, {passive: true});
+  gallerySection.addEventListener('pointerenter', () => { pointerInside = true; syncTimer(); });
+  gallerySection.addEventListener('pointerleave', () => { pointerInside = false; syncTimer(); });
+  gallerySection.addEventListener('focusin', () => { focusInside = true; syncTimer(); });
+  gallerySection.addEventListener('focusout', (event) => { focusInside = gallerySection.contains(event.relatedTarget); syncTimer(); });
+  document.addEventListener('visibilitychange', syncTimer);
+  reducedMotion.addEventListener('change', syncTimer);
+  window.addEventListener('resize', () => { sizeSpacer(); gallery.scrollTo({left: slideOffset(current), behavior: 'instant'}); });
+  controls.hidden = false;
+  dots.hidden = false;
+  update();
 }
 
-// Weighted Twitch channel selection (refreshed each page load)
+// Retain the site's existing weighted community Twitch rotation.
 (function () {
   const twitchChannels = [
-    { url: 'https://www.twitch.tv/cs2snitch', weight: 60 },
-    { url: 'https://www.twitch.tv/sleepybalkan', weight: 10 },
-    { url: 'https://www.twitch.tv/gr0v_plays_games', weight: 10 },
-    { url: 'https://www.twitch.tv/los13nto', weight: 10 },
-    { url: 'https://www.twitch.tv/', weight: 10 },
+    {url: 'https://www.twitch.tv/cs2snitch', weight: 60},
+    {url: 'https://www.twitch.tv/sleepybalkan', weight: 10},
+    {url: 'https://www.twitch.tv/gr0v_plays_games', weight: 10},
+    {url: 'https://www.twitch.tv/los13nto', weight: 10},
+    {url: 'https://www.twitch.tv/', weight: 10},
   ];
-  const totalWeight = twitchChannels.reduce((sum, c) => sum + c.weight, 0);
-  let rand = Math.random() * totalWeight;
-  let chosen = twitchChannels[twitchChannels.length - 1].url;
-  for (const channel of twitchChannels) {
-    rand -= channel.weight;
-    if (rand <= 0) { chosen = channel.url; break; }
-  }
-  document.querySelectorAll('a.twitch-link').forEach((el) => { el.href = chosen; });
+  let random = Math.random() * twitchChannels.reduce((sum, item) => sum + item.weight, 0);
+  const chosen = twitchChannels.find((item) => { random -= item.weight; return random < 0; }) || twitchChannels[0];
+  document.querySelectorAll('.twitch-link').forEach((link) => { link.href = chosen.url; });
 }());
-
-
-const MAX_PARTICLES = 80;
-if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const field = document.createElement('div');
-  field.className = 'particle-field';
-  document.body.prepend(field);
-
-  function spawnParticle() {
-    if (field.children.length >= MAX_PARTICLES) return;
-    const p = document.createElement('span');
-    p.className = 'particle';
-    const size = 2 + Math.random() * 3;
-    p.style.cssText = `
-      left: ${Math.random() * 100}vw;
-      width: ${size}px;
-      height: ${size}px;
-      opacity: ${0.2 + Math.random() * 0.4};
-      animation-duration: ${7 + Math.random() * 9}s;
-    `;
-    field.appendChild(p);
-    p.addEventListener('animationend', () => p.remove());
-  }
-
-  setInterval(spawnParticle, 250);
-}
-
